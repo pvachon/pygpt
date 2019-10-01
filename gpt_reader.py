@@ -50,7 +50,7 @@ def main():
         os.makedirs(args.output_dir)
 
     for partition in reader.partition_table.valid_entries():
-        print('{} {} {} {}'.format(
+        print('guid/type={} first-block={} size={} name={}'.format(
             partition.partition_type, partition.first_block, partition.length, partition.name))
 
         if args.burst:
