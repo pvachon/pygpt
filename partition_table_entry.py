@@ -14,8 +14,10 @@ class PartitionTableEntry(object):
         self._last_lba = last_lba
 
         self._name = name.decode('utf-16').rstrip('\0')
-
-        self._part_type = PartitionTypes(self._type_uuid)
+        try:
+            self._part_type = PartitionTypes(self._type_uuid)
+        except ValueError:
+            self._part_type = self._type_uuid
 
     def __repr__(self):
         if self._part_type == PartitionTypes.Unused:
