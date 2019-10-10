@@ -47,7 +47,7 @@ def main():
     reader = GPTReader(args.image, sector_size=args.sector_size)
 
     if args.output_dir != '' and args.burst:
-        os.makedirs(args.output_dir)
+        os.makedirs(args.output_dir, 0o777, True)
 
     for partition in reader.partition_table.valid_entries():
         print('guid/type={} first-block={} size={} name={}'.format(

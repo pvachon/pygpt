@@ -40,6 +40,7 @@ class GPTFile(object):
             raise Exception('Requested block out of range (there are {} blocks, requested block {})'.format(self._total_blocks, lba_start))
 
         if start_block + nr_blocks > self._total_blocks:
+            logging.debug("start-block {} requested-blocks {} total-blocks {}".format(start_block, nr_blocks, self._total_blocks))
             raise Exception('Total requested blocks out of range')
 
         if self._offset != start_block * self._blocksz:
